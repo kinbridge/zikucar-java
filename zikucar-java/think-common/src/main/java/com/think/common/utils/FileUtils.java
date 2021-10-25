@@ -2,14 +2,8 @@ package com.think.common.utils;
 
 import com.think.common.exception.ThinkException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import static sun.plugin2.ipc.IPCFactory.KB;
 
 /**
  * 文件相关工具类

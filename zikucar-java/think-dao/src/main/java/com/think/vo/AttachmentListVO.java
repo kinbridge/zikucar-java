@@ -90,5 +90,12 @@ public class AttachmentListVO implements Serializable {
      */
     private String href;
 
+
+
+    /**
+     * 显示信息（ext）
+     */
+    private String title;
+
     private static final long serialVersionUID = 1L;
 }

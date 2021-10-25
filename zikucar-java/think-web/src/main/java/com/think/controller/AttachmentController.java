@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -67,7 +68,10 @@ public class AttachmentController extends BaseController<Attachment> {
                 AttachmentListVO attachmentListVO = new AttachmentListVO();
                 BeanUtils.copyProperties(attachment,attachmentListVO);
                 ThinkBaseInfo base = baseInfoService.getById(attachment.getThinkBaseInfoId());
-                attachmentListVO.setHref(base == null ? "" :base.getHref());
+                if(base != null){
+                    attachmentListVO.setHref(base.getHref());
+                    attachmentListVO.setTitle(base.getTitle());
+                }
                 listDatas.add(attachmentListVO);
             });
         }
@@ -105,7 +109,9 @@ public class AttachmentController extends BaseController<Attachment> {
                 attachment.setSize(f.getSize());
                 attachment.setThinkBaseInfoId(billId);
                 attachment.setThinkTypeId(formType);
-                attachment.setOriginName(originalFilename.split(".")[0]);
+                if(StringUtils.hasText(originalFilename) && originalFilename.contains(".")){
+                    attachment.setOriginName(originalFilename.split("\\.")[0]);
+                }
                 attachment.setFileName(uuid);
                 attachment.setUrl(filePath+File.separator+uuid+fileType);
                 attachment.setFileType(fileType);
