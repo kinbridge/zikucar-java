@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import login from '@/views/login/index.vue'
 import register from '@/views/register/index.vue'
 import home from '@/views/home/index.vue'
-import projectManagement from '@/views/projectManagement/index.vue'
+import projectManagement from '@/views/projectManagement/thinkBaseInfoList.vue'
 import error404 from '@/views/404/index.vue'
 import homePage from '@/views/home/homePage.vue'
 
@@ -12,9 +12,13 @@ import userList from '@/views/user/userList.vue'
 import deptList from '@/views/user/deptList.vue'
 import positionList from '@/views/user/positionList.vue'
 
+// 附件管理
+import attachmentList from '@/views/attach/attchmentList.vue'
+
 Vue.use(Router)
 
 export default new Router({
+    mode: 'history',
     routes: [
         {
             path: "/",
@@ -51,7 +55,7 @@ export default new Router({
         },
         {
             path: "/home",
-            redirect: '/home/projectManagement',
+            redirect: '/home/deptList',
             hidden: true
         },
         {
@@ -84,9 +88,9 @@ export default new Router({
                     meta: {title: '产品管理', icon: 'fa fa-database'}
                 },
                 {
-                    path: 'projectManagement',
-                    name: 'projectManagement',
-                    component: projectManagement,
+                    path: 'attachmentList',
+                    name: 'attachmentList',
+                    component: attachmentList,
                     meta: {title: '附件管理', icon: 'fa fa-file'}
                 },
             ]
