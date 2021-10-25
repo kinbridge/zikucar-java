@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author bridge
- * @Date 2021/10/16/13:55
+ * 2021/10/16/13:55
  */
 @Service
 public class ThinkBaseInfoServiceImpl extends ServiceImpl<ThinkBaseInfoMapper, ThinkBaseInfo> implements IThinkBaseInfoService {

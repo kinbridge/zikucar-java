@@ -10,7 +10,11 @@ import com.think.vo.SysUserVO;
  */
 public interface ISysUserService extends IService<SysUser> {
 
-     boolean register(SysUserVO userVO);
+    boolean register(SysUserVO userVO);
 
-     boolean login(String username,String pwd);
+    boolean login(String username, String pwd);
+
+    boolean edit(SysUserVO userVO);
+
+    int editUserStatus(SysUser user);
 }
