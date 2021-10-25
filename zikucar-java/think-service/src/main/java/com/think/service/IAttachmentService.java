@@ -1,10 +1,8 @@
 package com.think.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.think.entity.Attachment;
-import com.think.vo.AttachmentListVO;
 
 /**
  * @author bridge
