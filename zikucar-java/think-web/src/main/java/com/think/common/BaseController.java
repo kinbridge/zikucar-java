@@ -28,7 +28,7 @@ public abstract class BaseController<T> {
     }
 
     @GetMapping("/getById/{id}")
-    public Result getById(@PathVariable int id) {
+    public Result getById(@PathVariable Long id) {
         return Result.success(getIService().getById(id));
     }
 
@@ -44,7 +44,7 @@ public abstract class BaseController<T> {
     }
 
     @GetMapping("/deleteById/{id}")
-    public Result deleteById(@PathVariable int id) {
+    public Result deleteById(@PathVariable Long id) {
         return getIService().removeById(id) ? Result.success("删除成功") : Result.fail("删除失败");
     }
 

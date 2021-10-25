@@ -51,7 +51,7 @@ public class SysUserController {
 
 
     @GetMapping("/getById/{id}")
-    public Result getById(@PathVariable int id) {
+    public Result getById(@PathVariable Long id) {
         SysUser user = getIService().getById(id);
         user.setPwd("");
         return Result.success(user);
@@ -59,7 +59,7 @@ public class SysUserController {
 
 
     @GetMapping("/editUserStatus/{id}")
-    public Result editUserStatus(@PathVariable(value = "id")Integer id,
+    public Result editUserStatus(@PathVariable(value = "id")Long id,
                            @RequestParam(value = "status")String status) {
 
         if(!StringUtils.hasText(status)){

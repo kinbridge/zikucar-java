@@ -13,5 +13,5 @@ import java.io.Serializable;
 @Data
 public class BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
-    private Integer pkId;
+    private Long pkId;
 }
