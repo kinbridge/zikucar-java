@@ -40,9 +40,6 @@ import java.util.List;
 @RequestMapping("/attach")
 public class AttachmentController extends BaseController<Attachment> {
 
-    public static final String BASE_PATH = "C:\\Users\\Administrator\\Desktop\\tmp\\attach";
-
-
     @Autowired
     private IAttachmentService service;
     @Autowired
@@ -104,7 +101,12 @@ public class AttachmentController extends BaseController<Attachment> {
                 String originalFilename = f.getOriginalFilename();
                 String fileType = FileUtils.getFileSuffix(originalFilename);
                 // 存储路径
-                String filePath = BASE_PATH + File.separator + yearMonth;
+                String basePath = "/home/attach";
+                String os = System.getProperty("os.name");
+                if(os.toLowerCase().startsWith("win")){
+                    basePath = "C:\\Users\\Administrator\\Desktop\\tmp\\attach";
+                }
+                String filePath = basePath + File.separator + yearMonth;
                 FileUtils.saveFile(f.getInputStream(), filePath,uuid+fileType);
                 attachment.setSize(f.getSize());
                 attachment.setThinkBaseInfoId(billId);
