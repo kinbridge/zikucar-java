@@ -1,13 +1,21 @@
 package com.think.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.think.common.views.Result;
+import com.think.common.views.ResultPage;
+import com.think.entity.Attachment;
 import com.think.entity.SysUser;
+import com.think.entity.ThinkBaseInfo;
 import com.think.service.ISysUserService;
-import com.think.vo.LoginVO;
-import com.think.vo.SysUserVO;
+import com.think.vo.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author bridge
@@ -47,6 +55,19 @@ public class SysUserController {
     @GetMapping("/list")
     public Result list() {
         return Result.success(getIService().list());
+    }
+
+    @PostMapping("/pageList")
+    public ResultPage listPage(@RequestBody SysUserQueryVO queryVO) {
+
+        IPage<SysUser> sysUserIPage = service.pageList(queryVO.getSysUser(), queryVO.getPage(), queryVO.getSize());
+        ResultPage page = new ResultPage();
+        page.setPage(queryVO.getPage());
+        page.setSize(queryVO.getSize());
+        page.setTotal(sysUserIPage.getTotal());
+        page.setData(sysUserIPage.getRecords());
+        page.setCode(200);
+        return page;
     }
 
 
